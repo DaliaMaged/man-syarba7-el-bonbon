@@ -3,8 +3,10 @@ package com.example.mansyrb7elbonbon;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "QusetionsTable")
-public class QusetionRoomClass {
+import com.example.mansyrb7elbonbon.Activity.SplashScreen;
+
+@Entity (tableName = SplashScreen.TABLE_NAME)
+public class QuestionsModel {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String question;
@@ -14,7 +16,7 @@ public class QusetionRoomClass {
     private String option4;
     private int trueAnswer;
 
-    public QusetionRoomClass(String question, String option1, String option2, String option3, String option4, int trueAnswer) {
+    public QuestionsModel(String question, String option1, String option2, String option3, String option4, int trueAnswer) {
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;

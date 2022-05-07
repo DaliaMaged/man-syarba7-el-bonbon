@@ -13,16 +13,23 @@ import android.widget.TextView;
 
 import com.example.mansyrb7elbonbon.R;
 
+import kotlin.text.CharDirectionality;
+
 public class SplashScreen extends AppCompatActivity {
+
+    public static final String TABLE_NAME  = "QuestionsTable";
 Animation topAnimation,bottomAnimation,bottonAnimation2,bottomAnmation3;
 ImageView imageView1,imageView2,imageView3,imageView4;
 private static int SPLASH_SCREEN=4000;
 TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
+
+
 
         //animation
         topAnimation= AnimationUtils.loadAnimation(this,R.anim.topanimation);

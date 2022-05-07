@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = QusetionRoomClass.class,version = 1)
+@Database(entities = QuestionsModel.class,version = 1)
 public abstract class questionRoomDB extends RoomDatabase {
     private static questionRoomDB instance;
      abstract QustionDao qustionDao();
@@ -45,10 +45,10 @@ public abstract class questionRoomDB extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-             mquestionDao.insert(new QusetionRoomClass("Question1","answer1","answer2","answer3","answer4",1));
-            mquestionDao.insert(new QusetionRoomClass("Question1","answer1","answer2","answer3","answer4",2));
-            mquestionDao.insert(new QusetionRoomClass("Question1","answer1","answer2","answer3","answer4",3));
-            mquestionDao.insert(new QusetionRoomClass("Question1","answer1","answer2","answer3","answer4",4));
+             mquestionDao.insert(new QuestionsModel("Question1","answer1","answer2","answer3","answer4",1));
+            mquestionDao.insert(new QuestionsModel("Question1","answer1","answer2","answer3","answer4",2));
+            mquestionDao.insert(new QuestionsModel("Question1","answer1","answer2","answer3","answer4",3));
+            mquestionDao.insert(new QuestionsModel("Question1","answer1","answer2","answer3","answer4",4));
             return null;
         }
     }
