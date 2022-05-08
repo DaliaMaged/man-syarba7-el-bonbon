@@ -1,5 +1,6 @@
 package com.example.mansyrb7elbonbon.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,8 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mansyrb7elbonbon.R;
+import com.example.mansyrb7elbonbon.model.Modelclass;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import kotlin.text.CharDirectionality;
+import java.util.ArrayList;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -22,6 +29,11 @@ Animation topAnimation,bottomAnimation,bottonAnimation2,bottomAnmation3;
 ImageView imageView1,imageView2,imageView3,imageView4;
 private static int SPLASH_SCREEN=4000;
 TextView textView;
+
+//List of Questions
+     public static ArrayList<Modelclass> listOfQuestion;
+     DatabaseReference databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,7 +41,32 @@ TextView textView;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.splash_screen);
 
+        //list question
+        listOfQuestion= new ArrayList<>();
 
+        databaseReference= FirebaseDatabase.getInstance().getReference("Question");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Modelclass modelclass= dataSnapshot.getValue(Modelclass.class);
+                    listOfQuestion.add(modelclass);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        listOfQuestion.add(new Modelclass("question1","ans1","ans2","ans3","ans4","ans3"));
+//        listOfQuestion.add(new Modelclass("question2","ans1","ans2","ans3","ans4","ans4"));
+//        listOfQuestion.add(new Modelclass("question3","ans1","ans2","ans3","ans4","ans2"));
+//        listOfQuestion.add(new Modelclass("question4","ans1","ans2","ans3","ans4","ans1"));
+//        listOfQuestion.add(new Modelclass("question5","ans1","ans2","ans3","ans4","ans4"));
+//        listOfQuestion.add(new Modelclass("question6","ans1","ans2","ans3","ans4","ans1"));
 
         //animation
         topAnimation= AnimationUtils.loadAnimation(this,R.anim.topanimation);

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.WinActivity"
+    android:background="@drawable/ic_android_small___11">
+
+
+    <ImageView
+        android:id="@+id/imgGirl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBoy1"
+        app:layout_constraintEnd_toStartOf="@+id/imgGirl2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_girl1" />
+
+    <ImageView
+        android:id="@+id/imgBoy2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imggirl3"
+        app:srcCompat="@drawable/ic_boy3" />
+
+    <ImageView
+        android:id="@+id/imgGirl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgBoy2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_girl2" />
+
+    <ImageView
+        android:id="@+id/imgBoy1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="170dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imggirl3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_boy4" />
+
+    <ImageView
+        android:id="@+id/imggirl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_girl3" />
+
+    <TextView
+        android:id="@+id/textWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You Win"
+        android:textColor="@color/red"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/imgGirl2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWin">
+
+<!--        <com.mikhaellopez.circularprogressbar.CircularProgressBar-->
+<!--            android:id="@+id/circularProgressBar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cpb_background_progressbar_color="@color/red"-->
+<!--            app:cpb_background_progressbar_width="10dp"-->
+<!--            app:cpb_progress_direction="to_right"-->
+<!--            app:cpb_progress_max="20"-->
+<!--            app:cpb_progressbar_color="@color/green"-->
+<!--            app:cpb_progressbar_width="10dp"-->
+<!--            app:cpb_round_border="false" />-->
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

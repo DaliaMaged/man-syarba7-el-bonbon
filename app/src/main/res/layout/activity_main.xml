@@ -22,14 +22,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="340dp"
+        android:id="@+id/questionID"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/counter_qustion"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/question_contaner"
         android:padding="10dp"
         android:text="له رأس وليس له عيون , فما هو؟"
         android:textAlignment="center"
@@ -41,71 +42,72 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="MissingConstraints" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingRight="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:ignore="MissingConstraints"
-        >
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorSingle"
-            android:textSize="18dp"
-            android:text=" الدبوس"
-            tools:ignore="RtlCompat"
-            android:buttonTint="@color/yellow"/>
+<!--    <RadioGroup-->
+<!--        android:id="@+id/radioGroup"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:paddingRight="40dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView3"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        >-->
 
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:text=" الارنب"
-            android:button="@null"
-            android:buttonTint="@color/yellow"
-            android:drawableRight="?android:attr/listChoiceIndicatorSingle"
-            />
+<!--        <RadioButton-->
+<!--            android:id="@+id/radioButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:button="@null"-->
+<!--            android:drawableRight="?android:attr/listChoiceIndicatorSingle"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text=" الدبوس"-->
+<!--            tools:ignore="RtlCompat"-->
+<!--            android:buttonTint="@color/yellow"/>-->
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:text=" المرأه"
-            android:button="@null"
-            android:buttonTint="@color/yellow"
-            android:drawableRight="?android:attr/listChoiceIndicatorSingle" />
+<!--        <RadioButton-->
+<!--            android:id="@+id/radioButton2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text=" الارنب"-->
+<!--            android:button="@null"-->
+<!--            android:buttonTint="@color/yellow"-->
+<!--            android:drawableRight="?android:attr/listChoiceIndicatorSingle"-->
+<!--            />-->
 
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:text=" السلحفاء"
-            android:button="@null"
-            android:buttonTint="@color/yellow"
-            android:drawableRight="?android:attr/listChoiceIndicatorSingle"/>
-    </RadioGroup>
+<!--        <RadioButton-->
+<!--            android:id="@+id/radioButton3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text=" المرأه"-->
+<!--            android:button="@null"-->
+<!--            android:buttonTint="@color/yellow"-->
+<!--            android:drawableRight="?android:attr/listChoiceIndicatorSingle" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/radioButton4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18dp"-->
+<!--            android:text=" السلحفاء"-->
+<!--            android:button="@null"-->
+<!--            android:buttonTint="@color/yellow"-->
+<!--            android:drawableRight="?android:attr/listChoiceIndicatorSingle"/>-->
+<!--    </RadioGroup>-->
 
     <TextView
-        android:id="@+id/btnNext"
+        android:id="@+id/btnNextQuestion"
         android:layout_width="156dp"
         android:layout_height="60dp"
         android:layout_marginStart="261dp"
@@ -120,13 +122,82 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <Button
+        android:id="@+id/option1ID"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
+        android:text="الدبوس "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:onClick="option1Click"
+        android:background="@drawable/answer_contaner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionID"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/option4ID"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/answer_contaner"
+        android:text="المرأه "
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:onClick="option4Click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option2ID"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/option3ID"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:text="الثعلب "
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:onClick="option3Click"
+        android:background="@drawable/answer_contaner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/option1ID"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/option2ID"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="20dp"
+        android:text="النحلة "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:onClick="option2Click"
+        android:background="@drawable/answer_contaner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionID"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:srcCompat="@drawable/ic_thinkboy" />
 </androidx.constraintlayout.widget.ConstraintLayout>

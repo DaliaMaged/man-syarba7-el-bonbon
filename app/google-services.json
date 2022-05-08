@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243415174810",
+    "project_id": "man-syrb7-el-bonbon",
+    "storage_bucket": "man-syrb7-el-bonbon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243415174810:android:1318eb9da60001487b9923",
+        "android_client_info": {
+          "package_name": "com.example.mansyrb7elbonbon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243415174810-25k1gli0u0ukj1ls2o7ockfaqgdunof1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDciRfpgGz1tK3Y4QenutsAUVzXbQomqjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243415174810-25k1gli0u0ukj1ls2o7ockfaqgdunof1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
