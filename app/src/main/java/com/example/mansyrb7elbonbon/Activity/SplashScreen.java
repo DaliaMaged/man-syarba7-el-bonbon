@@ -44,7 +44,7 @@ TextView textView;
         //list question
         listOfQuestion= new ArrayList<>();
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Question");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Question").child("Level_one");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

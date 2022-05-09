@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mansyrb7elbonbon.R;
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Modelclass modelClass;
     int index=0;
     Button option1,option2,option3,option4;
-    TextView question,btnNext;
+    TextView question,btnNext,textAns,textCorrectAns;
+    ImageView back,home;
     int correctCount=0;
     int wrongCount=0;
 
@@ -36,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         option3=findViewById(R.id.option3ID);
         option4=findViewById(R.id.option4ID);
         btnNext=findViewById(R.id.btnNextQuestion);
+        textAns=findViewById(R.id.textAns);
+        textCorrectAns=findViewById(R.id.textCorrectAns);
+        back=findViewById(R.id.iconBack);
+        home=findViewById(R.id.iconHome);
+
+        //visibale
+        textAns.setVisibility(View.GONE);
+        textCorrectAns.setVisibility(View.GONE);
 
 
         //
@@ -51,8 +61,24 @@ public class MainActivity extends AppCompatActivity {
 
         btnNext.setClickable(false);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back= new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(back);
+            }
+        });
+
         setAllData();
 
+        //icons
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MainActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
     public void setAllData(){
@@ -61,51 +87,9 @@ public class MainActivity extends AppCompatActivity {
         option2.setText(modelClass.getOption2());
         option3.setText(modelClass.getOption3());
         option4.setText(modelClass.getOption4());
+        textCorrectAns.setText(modelClass.getAnswer());
     }
 
-    public void Correct( Button button){
-
-        button.setBackgroundResource(R.drawable.right_answer);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                correctCount++;
-                index++;
-                modelClass=SplashScreen.listOfQuestion.get(index);
-                setAllData();
-                resetColor();
-                enableButton();
-            }
-        });
-
-    }
-
-
-    public void Wrong( Button option1){
-        option1.setBackgroundResource(R.drawable.wrong_answer);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                wrongCount++;
-                if (index<SplashScreen.listOfQuestion.size()-1){
-                    index++;
-                    modelClass=SplashScreen.listOfQuestion.get(index);
-                    resetColor();
-                    setAllData();
-                    enableButton();
-                }else {
-
-                    GameWon();
-                }
-            }
-        });
-    }
-
-    public void GameWon(){
-        Intent intent= new Intent(MainActivity.this, WinActivity.class);
-        startActivity(intent);
-
-    }
     public void enableButton(){
         option1.setClickable(true);
         option2.setClickable(true);
@@ -125,6 +109,66 @@ public class MainActivity extends AppCompatActivity {
         option4.setBackgroundResource(R.drawable.answer_contaner);
     }
 
+    public void ShowAnswer(){
+        textAns.setVisibility(View.VISIBLE);
+        textCorrectAns.setVisibility(View.VISIBLE);
+    }
+    public void HideAnswer(){
+        textAns.setVisibility(View.GONE);
+        textCorrectAns.setVisibility(View.GONE);
+    }
+
+    public void Correct( Button button){
+
+        button.setBackgroundResource(R.drawable.right_answer);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                correctCount++;
+                index++;
+                modelClass=SplashScreen.listOfQuestion.get(index);
+                resetColor();
+                setAllData();
+                enableButton();
+            }
+        });
+
+    }
+
+    public void Wrong( Button option1){
+        option1.setBackgroundResource(R.drawable.wrong_answer);
+        ShowAnswer();
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wrongCount++;
+                HideAnswer();
+                if (index<SplashScreen.listOfQuestion.size()-1){
+                    index++;
+                    modelClass=SplashScreen.listOfQuestion.get(index);
+                    resetColor();
+                    setAllData();
+                    enableButton();
+                }else {
+                    GameWon();
+                }
+            }
+        });
+
+    }
+
+    public void GameWon(){
+        Intent intent= new Intent(MainActivity.this, WinActivity.class);
+        startActivity(intent);
+
+    }
+
+
+
+
+
+
+
     public void option1Click(View view) {
         disableButton();
         btnNext.setClickable(true);
@@ -139,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Wrong(option1);
+
+
         }
     }
 
@@ -156,7 +202,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Wrong(option2);
+
         }
+
     }
 
     public void option3Click(View view) {
@@ -173,7 +221,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Wrong(option3);
+
         }
+
     }
 
     public void option4Click(View view) {
@@ -190,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Wrong(option4);
+
         }
     }
 }

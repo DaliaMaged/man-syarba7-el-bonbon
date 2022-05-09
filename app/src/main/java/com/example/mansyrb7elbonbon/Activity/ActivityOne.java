@@ -54,7 +54,7 @@ public class ActivityOne extends AppCompatActivity {
         txtSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ActivityOne.this, MainActivity.class));
+                startActivity(new Intent(ActivityOne.this, HomeActivity.class));
             }
         });
 

@@ -39,8 +39,8 @@ public class WinActivity extends AppCompatActivity {
         imgGirl1.setAnimation(topAnimation);
         imgGirl2.setAnimation(topAnimation2);
         imgGirl3.setAnimation(bottonAnimation);
-        imgBoy1.setAnimation(rightAnmation);
-        imgBoy2.setAnimation(leftAnimation);
+        imgBoy1.setAnimation(leftAnimation);
+        imgBoy2.setAnimation(rightAnmation);
 
 
     }
