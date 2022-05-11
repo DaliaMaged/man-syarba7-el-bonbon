@@ -44,7 +44,7 @@ TextView textView;
         //list question
         listOfQuestion= new ArrayList<>();
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Question").child("Level_one");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Question").child("Level_One");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,12 +61,6 @@ TextView textView;
             }
         });
 
-//        listOfQuestion.add(new Modelclass("question1","ans1","ans2","ans3","ans4","ans3"));
-//        listOfQuestion.add(new Modelclass("question2","ans1","ans2","ans3","ans4","ans4"));
-//        listOfQuestion.add(new Modelclass("question3","ans1","ans2","ans3","ans4","ans2"));
-//        listOfQuestion.add(new Modelclass("question4","ans1","ans2","ans3","ans4","ans1"));
-//        listOfQuestion.add(new Modelclass("question5","ans1","ans2","ans3","ans4","ans4"));
-//        listOfQuestion.add(new Modelclass("question6","ans1","ans2","ans3","ans4","ans1"));
 
         //animation
         topAnimation= AnimationUtils.loadAnimation(this,R.anim.topanimation);
