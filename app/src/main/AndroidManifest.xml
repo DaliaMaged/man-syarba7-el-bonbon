@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ManSyrb7ElBonbon">
         <activity
+            android:name=".Activity.TryActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.HomeActivity"
             android:exported="false" />
         <activity
