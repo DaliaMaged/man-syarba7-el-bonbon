@@ -1,19 +1,26 @@
 package com.example.mansyrb7elbonbon.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mansyrb7elbonbon.R;
 import com.example.mansyrb7elbonbon.model.Modelclass;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     List<Modelclass>allQuestionList;
@@ -24,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView back,home;
     int correctCount=0;
     int wrongCount=0;
+    TextView timer;
+    CountDownTimer  countdowntimer;
 
 
 
@@ -42,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         textCorrectAns=findViewById(R.id.textCorrectAns);
         back=findViewById(R.id.iconBack);
         home=findViewById(R.id.iconHome);
+        //timer
+       timerFunction();
+
 
         //visibale
         textAns.setVisibility(View.GONE);
@@ -121,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
     public void Correct( Button button){
 
         button.setBackgroundResource(R.drawable.right_answer);
+        reset();
+        notificationCorrect();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -130,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
                 resetColor();
                 setAllData();
                 enableButton();
+                timerFunction();
+
             }
         });
 
@@ -138,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
     public void Wrong( Button option1){
         option1.setBackgroundResource(R.drawable.wrong_answer);
         ShowAnswer();
+        notificationWrong();
+        reset();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
                     resetColor();
                     setAllData();
                     enableButton();
+                    timerFunction();
+
                 }else {
                     GameWon();
                 }
@@ -160,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
     public void GameWon(){
         Intent intent= new Intent(MainActivity.this, WinActivity.class);
         startActivity(intent);
+        reset();
 
     }
 
@@ -242,5 +263,64 @@ public class MainActivity extends AppCompatActivity {
             Wrong(option4);
 
         }
+    }
+    public void timerFunction() {
+        timer = findViewById(R.id.timer);
+        //time durtion
+        long duration = TimeUnit.MINUTES.toMillis(1);
+        //countdown
+        countdowntimer = new CountDownTimer(40000, 1000) {
+            @Override
+            public void onTick(long l) {
+                //when tick convert milliseconds to minutes and seconds
+                NumberFormat f = new DecimalFormat("00");
+                long min = (l / 60000) % 60;
+                long sec = (l / 1000) % 60;
+                timer.setText(f.format(min) + ":" + f.format(sec));
+
+
+            }
+
+            @Override
+            public void onFinish() {
+                timer.setText("00:00");
+                Toast.makeText(getApplicationContext(), "time is up ", Toast.LENGTH_LONG).show();
+                ShowAnswer();
+
+            }
+        }.start();
+    }
+    public void reset(){
+        countdowntimer.cancel();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countdowntimer!=null){
+            countdowntimer.cancel();
+        }
+    }
+    private void notificationCorrect(){
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(this,Utils.CHANNEL_ID);
+        builder.setContentTitle(Utils.NOTIFY_TITLE);
+        builder.setContentText(Utils.NOTIFY_DESC_correct);
+        builder.setSmallIcon(R.drawable.ic_ballon__1_);
+        builder.setAutoCancel(true);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(this);
+        managerCompat.notify(Utils.NOTIFY_ID,builder.build());
+    }
+    private void notificationWrong(){
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(this,Utils.CHANNEL_ID);
+        builder.setContentTitle(Utils.NOTIFY_TITLE);
+        builder.setContentText(Utils.NOTIFY_DESC_wrong);
+        builder.setSmallIcon(R.drawable.ic_ballon__1_);
+        builder.setAutoCancel(true);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(this);
+        managerCompat.notify(Utils.NOTIFY_ID,builder.build());
     }
 }

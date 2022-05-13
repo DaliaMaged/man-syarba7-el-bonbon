@@ -41,7 +41,7 @@ public class ActivityThree extends AppCompatActivity {
         getStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(ActivityThree.this, TryActivity.class);
+                Intent intent= new Intent(ActivityThree.this, HomeActivity.class);
                 startActivity(intent);
             }
         });

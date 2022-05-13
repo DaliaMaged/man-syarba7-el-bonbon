@@ -56,10 +56,7 @@ public class TryActivity extends AppCompatActivity {
                 builder.setContentText("Excellent , ready to the next question!");
                 builder.setSmallIcon(R.drawable.ic_ballon__1_);
                 builder.setAutoCancel(true);
-               // Intent notificationIntent = new Intent(this, TryActivity.class);
-//                PendingIntent contentIntent = PendingIntent.getActivity(, 0, notificationIntent,
-//                        PendingIntent.FLAG_UPDATE_CURRENT);
-//                builder.setContentIntent(contentIntent);
+
 
                 NotificationManagerCompat managerCompat=NotificationManagerCompat.from(TryActivity.this);
                 managerCompat.notify(1,builder.build());
@@ -69,7 +66,7 @@ public class TryActivity extends AppCompatActivity {
 
     private void timerFunction() {
         timer=findViewById(R.id.timer);
-        //time durtion
+        //time duration
         long duration = TimeUnit.MINUTES.toMillis(1);
         //countdown
         new CountDownTimer(40000, 1000) {
