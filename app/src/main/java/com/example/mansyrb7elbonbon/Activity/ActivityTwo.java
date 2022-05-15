@@ -15,7 +15,7 @@ import com.example.mansyrb7elbonbon.R;
 
 public class ActivityTwo extends AppCompatActivity {
     Animation topAnimation,bottomAnimation,bottonAnimation2,bottomAnmation3;
-    ImageView imageView1,imageView2,imageView3,imageView4,imageViewBallon;
+    ImageView imageView1,imageView2,imageView3;
     TextView txtSkip,txtNext;
 
 
@@ -33,16 +33,14 @@ public class ActivityTwo extends AppCompatActivity {
         imageView1=findViewById(R.id.imageView1);
         imageView2=findViewById(R.id.imageView2);
         imageView3=findViewById(R.id.imageView3);
-        imageView4=findViewById(R.id.imageView4);
-        imageViewBallon=findViewById(R.id.imageBallon);
+
         txtSkip=findViewById(R.id.txtSkip);
         txtNext=findViewById(R.id.txtNext);
 
-        imageView1.setAnimation(bottomAnmation3);
+        imageView1.setAnimation(topAnimation);
         imageView2.setAnimation(bottomAnimation);
-        imageView3.setAnimation(bottomAnimation);
-        imageView4.setAnimation(bottonAnimation2);
-        imageViewBallon.setAnimation(topAnimation);
+        imageView3.setAnimation(bottonAnimation2);
+
 
         txtNext.setOnClickListener(new View.OnClickListener() {
             @Override
