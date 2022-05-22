@@ -81,7 +81,22 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="57dp" />
 
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="112dp"
+        android:layout_height="35dp"
+        android:text="score"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textWin" />
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
         android:layout_height="140dp"
         android:layout_marginStart="80dp"
@@ -93,17 +108,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textWin">
 
-<!--        <com.mikhaellopez.circularprogressbar.CircularProgressBar-->
-<!--            android:id="@+id/circularProgressBar"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:cpb_background_progressbar_color="@color/red"-->
-<!--            app:cpb_background_progressbar_width="10dp"-->
-<!--            app:cpb_progress_direction="to_right"-->
-<!--            app:cpb_progress_max="20"-->
-<!--            app:cpb_progressbar_color="@color/green"-->
-<!--            app:cpb_progressbar_width="10dp"-->
-<!--            app:cpb_round_border="false" />-->
+        <!--        <com.mikhaellopez.circularprogressbar.CircularProgressBar-->
+        <!--            android:id="@+id/circularProgressBar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:cpb_background_progressbar_color="@color/red"-->
+        <!--            app:cpb_background_progressbar_width="10dp"-->
+        <!--            app:cpb_progress_direction="to_right"-->
+        <!--            app:cpb_progress_max="20"-->
+        <!--            app:cpb_progressbar_color="@color/green"-->
+        <!--            app:cpb_progressbar_width="10dp"-->
+        <!--            app:cpb_round_border="false" />-->
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -235,7 +235,7 @@
         tools:ignore="MissingConstraints"
         android:background="#CEECF0">
 
-        <ImageView
+       <ImageView
             android:id="@+id/iconBack"
             android:layout_width="25dp"
             android:layout_height="30dp"
@@ -244,7 +244,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+            app:srcCompat="@drawable/ic_bonboni" />
+
+
+        <TextView
+            android:id="@+id/bonboni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textColor="@color/red"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconBack"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
+            />
 
         <ImageView
             android:id="@+id/iconHome"

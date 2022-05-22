@@ -2,6 +2,7 @@ package com.example.mansyrb7elbonbon.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -11,10 +12,12 @@ import android.widget.TextView;
 import com.example.mansyrb7elbonbon.R;
 
 public class WinActivity extends AppCompatActivity {
-    TextView winText;
+    TextView winText,score;
+    int correct,wrong;
     ImageView imgGirl1,imgGirl2,imgGirl3,imgBoy1,imgBoy2;
     Animation topAnimation,topAnimation2,bottonAnimation,rightAnmation,leftAnimation;
     private static int SPLASH_SCREEN=4000;
+    MediaPlayer ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,23 @@ public class WinActivity extends AppCompatActivity {
         imgBoy1.setAnimation(leftAnimation);
         imgBoy2.setAnimation(rightAnmation);
 
+        score=findViewById(R.id.score);
+        correct=getIntent().getIntExtra("correct",0);
+        wrong=getIntent().getIntExtra("wrong",0);
+        score.setText(correct+ "/10");
+if (correct<5){
+    WrongSound();
+}
+else {
+    correctSound();
+}
 
     }
+    private void correctSound(){
+        ring= MediaPlayer.create(WinActivity.this,R.raw.kids2);
+        ring.start();    }
+
+    private void WrongSound(){
+        ring= MediaPlayer.create(WinActivity.this,R.raw.kids1);
+        ring.start();    }
 }

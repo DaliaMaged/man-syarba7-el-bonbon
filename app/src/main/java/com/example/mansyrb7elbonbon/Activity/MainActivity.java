@@ -5,6 +5,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -27,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
     Modelclass modelClass;
     int index=0;
     Button option1,option2,option3,option4;
-    TextView question,btnNext,textAns,textCorrectAns;
+    TextView question,btnNext,textAns,textCorrectAns,bonboni,timer;
     ImageView back,home;
     int correctCount=0;
     int wrongCount=0;
-    TextView timer;
     CountDownTimer  countdowntimer;
+    MediaPlayer ring;
 
 
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         textCorrectAns=findViewById(R.id.textCorrectAns);
         back=findViewById(R.id.iconBack);
         home=findViewById(R.id.iconHome);
+        bonboni=findViewById(R.id.bonboni);
         //timer
        timerFunction();
 
@@ -71,27 +73,21 @@ public class MainActivity extends AppCompatActivity {
         option3.setBackgroundResource(R.drawable.answer_contaner);
         option4.setBackgroundResource(R.drawable.answer_contaner);
 
-        btnNext.setClickable(false);
+      //  btnNext.setClickable(false);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back= new Intent(MainActivity.this,HomeActivity.class);
-                startActivity(back);
-            }
-        });
+
 
         setAllData();
 
         //icons
-        back.setOnClickListener(new View.OnClickListener() {
+      /*  back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(MainActivity.this,HomeActivity.class);
                 startActivity(intent);
             }
         });
-
+*/
     }
     public void setAllData(){
         question.setText(modelClass.getQuestion());
@@ -135,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         button.setBackgroundResource(R.drawable.right_answer);
         reset();
         notificationCorrect();
+        correctSound();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,9 +142,13 @@ public class MainActivity extends AppCompatActivity {
                 setAllData();
                 enableButton();
                 timerFunction();
+                bonboni.setText(" "+correctCount);
+
+
 
             }
         });
+
 
     }
 
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
         option1.setBackgroundResource(R.drawable.wrong_answer);
         ShowAnswer();
         notificationWrong();
+        WrongSound();
         reset();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void GameWon(){
         Intent intent= new Intent(MainActivity.this, WinActivity.class);
+        intent.putExtra("correct",correctCount);
+        intent.putExtra("wrong",wrongCount);
         startActivity(intent);
         reset();
 
@@ -300,6 +304,9 @@ public class MainActivity extends AppCompatActivity {
         if (countdowntimer!=null){
             countdowntimer.cancel();
         }
+        if (ring!=null){
+            ring.stop();
+        }
     }
     private void notificationCorrect(){
         NotificationCompat.Builder builder=new NotificationCompat.Builder(this,Utils.CHANNEL_ID);
@@ -307,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setContentText(Utils.NOTIFY_DESC_correct);
         builder.setSmallIcon(R.drawable.ic_ballon__1_);
         builder.setAutoCancel(true);
-        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setPriority(NotificationCompat.PRIORITY_LOW);
 
         NotificationManagerCompat managerCompat=NotificationManagerCompat.from(this);
         managerCompat.notify(Utils.NOTIFY_ID,builder.build());
@@ -318,9 +325,16 @@ public class MainActivity extends AppCompatActivity {
         builder.setContentText(Utils.NOTIFY_DESC_wrong);
         builder.setSmallIcon(R.drawable.ic_ballon__1_);
         builder.setAutoCancel(true);
-        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setPriority(NotificationCompat.PRIORITY_LOW);
 
         NotificationManagerCompat managerCompat=NotificationManagerCompat.from(this);
         managerCompat.notify(Utils.NOTIFY_ID,builder.build());
     }
+    private void correctSound(){
+         ring= MediaPlayer.create(MainActivity.this,R.raw.achivemnt);
+        ring.start();    }
+
+    private void WrongSound(){
+        ring= MediaPlayer.create(MainActivity.this,R.raw.wrong);
+        ring.start();    }
 }
