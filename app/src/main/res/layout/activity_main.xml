@@ -35,7 +35,7 @@
         android:text="له رأس وليس له عيون , فما هو؟"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

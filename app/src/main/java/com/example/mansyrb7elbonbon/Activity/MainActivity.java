@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,13 +31,16 @@ public class MainActivity extends AppCompatActivity {
     List<Modelclass>allQuestionList;
     Modelclass modelClass;
     int index=0;
-    Button option1,option2,option3,option4;
+    Button option1,option2,option3,option4,btnDialog;
     TextView question,btnNext,textAns,textCorrectAns,bonboni,timer;
-    ImageView back,home;
+    ImageView back,home,img1,img2;
     int correctCount=0;
     int wrongCount=0;
     CountDownTimer  countdowntimer;
     MediaPlayer ring;
+    Dialog dialog;
+
+    Animation topAnimation,topAnimation2;
 
 
 
@@ -73,18 +80,32 @@ public class MainActivity extends AppCompatActivity {
         option3.setBackgroundResource(R.drawable.answer_contaner);
         option4.setBackgroundResource(R.drawable.answer_contaner);
 
-      //  btnNext.setClickable(false);
+        btnNext.setClickable(false);
+
+        //dialge
+        dialog= new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.custom_dialg);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.setCancelable(false);
+        dialog.getWindow().getAttributes().windowAnimations=R.style.animation;
+
+        //dialog conf
+        btnDialog= dialog.findViewById(R.id.dilogButton);
+        img1=dialog.findViewById(R.id.img1);
+        img2=dialog.findViewById(R.id.img2);
 
 
-
-        setAllData();
+        //animation
+        topAnimation= AnimationUtils.loadAnimation(this,R.anim.topanimation);
+        topAnimation2=AnimationUtils.loadAnimation(this,R.anim.topanimation2);
+        img1.setAnimation(topAnimation);
+        img2.setAnimation(topAnimation2);
 
         //icons
       /*  back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this,HomeActivity.class);
-                startActivity(intent);
+                dialog.dismiss();
             }
         });
 */
@@ -149,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void Wrong( Button option1){
@@ -187,10 +207,6 @@ public class MainActivity extends AppCompatActivity {
         reset();
 
     }
-
-
-
-
 
 
 
